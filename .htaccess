@@ -1,5 +1,3 @@
-<FilesMatch "\.(js)$">
-    <IfModule mod_headers.c>
-        Header set Access-Control-Allow-Origin "https://ukm.no"
-    </IfModule>
-</FilesMatch>
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "https://ukm.no"
+</IfModule>
