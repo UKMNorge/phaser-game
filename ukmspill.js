@@ -27,12 +27,23 @@ var scoreText;
 
 var game = new Phaser.Game(config);
 
+var scriptSource = (function() {
+    var scripts = document.getElementsByTagName('script'),
+        script = scripts[scripts.length - 1];
+
+    if (script.getAttribute.length !== undefined) {
+        return script.getAttribute('src')
+    }
+
+    return script.getAttribute('src', 2)
+}()).match(/.*\//)[0];
+
 function preload() {
-    this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+    this.load.image('sky', scriptSource + '/assets/sky.png');
+    this.load.image('ground', scriptSource + '/assets/platform.png');
+    this.load.image('star', scriptSource + '/assets/star.png');
+    this.load.image('bomb', scriptSource + '/assets/bomb.png');
+    this.load.spritesheet('dude', scriptSource + '/assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 }
 
 function create() {
